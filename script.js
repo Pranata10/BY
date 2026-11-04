@@ -113,8 +113,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-// 🔥 Ganti URL di bawah ini dengan Web App URL milikmu dari Google Apps Script
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbztir_Hj7PeJRupi2S3IkenBtQQwpKPbViGnd0rfmQnFz1zu00wJ_tPCbH44BIeH1HgRQ/exec";
+// 🔥 URL Web App Google Apps Script kamu
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyrqYiv22vube3PmZ8w2t_3wjDhOhBhOkR051Bk_Dl4mfcdXNQMCD-tdaWrdpcgFdaQPw/exec";
 
 document.addEventListener("DOMContentLoaded", function () {
     const rsvpForm = document.getElementById("rsvpForm");
@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 1. Handle Submit Form RSVP ke Spreadsheet
     rsvpForm.addEventListener("submit", function (e) {
-        e.preventDefault();
+        e.preventDefault(); // Mencegah halaman reload bawaan HTML
 
         const name = document.getElementById("rsvpName").value.trim();
         const message = document.getElementById("rsvpMessage").value.trim();
@@ -140,45 +140,49 @@ document.addEventListener("DOMContentLoaded", function () {
         submitBtn.textContent = "Mengirim...";
         rsvpFeedback.textContent = "";
 
-        const formData = {
-            name: name,
-            message: message,
-            status: status
-        };
+        const formData = new URLSearchParams();
+        formData.append("name", name);
+        formData.append("message", message);
+        formData.append("status", status);
 
+        // Menggunakan mode no-cors agar lolos dari blokir CORS Google Apps Script secara instan
         fetch(SCRIPT_URL, {
             method: "POST",
-            mode: "no-cors", // Diperlukan untuk Google Apps Script Web App
+            mode: "no-cors",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/x-www-form-urlencoded",
             },
-            body: JSON.stringify(formData)
+            body: formData
         })
         .then(() => {
+            // Karena mode no-cors membuat respon diblokir browser, 
+            // kita langsung asumsikan berhasil karena data sudah terkirim ke server Google
             rsvpFeedback.textContent = "Terima kasih! Ucapan & konfirmasi berhasil dikirim.";
             rsvpForm.reset();
             submitBtn.disabled = false;
             submitBtn.textContent = "Send";
             
-            // Muat ulang daftar ucapan setelah beberapa detik agar data terbaru muncul
-            setTimeout(loadMessages, 1500);
+            // Beri jeda 1 detik lalu tarik data terbaru dari spreadsheet untuk ditampilkan di bawah
+            setTimeout(() => {
+                loadMessages();
+            }, 1000);
         })
         .catch(error => {
             console.error("Error!", error);
-            rsvpFeedback.textContent = "Maaf, terjadi kesalahan. Silakan coba lagi.";
+            rsvpFeedback.textContent = "Maaf, terjadi kesalahan jaringan. Silakan coba lagi.";
             submitBtn.disabled = false;
             submitBtn.textContent = "Send";
         });
     });
 
-    // 2. Load / Ambil Data Ucapan dari Spreadsheet untuk Ditampilkan di Bawah
+    // 2. Load / Ambil Data Ucapan dari Spreadsheet
     function loadMessages() {
-        if (!SCRIPT_URL.includes("http")) return; // Cegah error jika URL belum diisi
+        if (!SCRIPT_URL.includes("http")) return;
 
         fetch(SCRIPT_URL)
             .then(response => response.json())
             .then(data => {
-                if (data.length === 0) {
+                if (!Array.isArray(data) || data.length === 0) {
                     rsvpMessages.innerHTML = `
                         <p class="rsvp-empty">
                             Jadilah yang pertama menyampaikan doa untuk Bayu & Yanti.
@@ -190,7 +194,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 rsvpCount.textContent = `${data.length} ucapan`;
                 rsvpMessages.innerHTML = "";
 
-                // Render setiap pesan ke dalam card HTML
                 data.forEach(item => {
                     let statusClass = "rsvp-status";
                     if (item.status === "Tidak Hadir") statusClass += " status-no";
@@ -212,8 +215,8 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(err => console.error("Gagal memuat ucapan:", err));
     }
 
-    // Fungsi keamanan kecil untuk mencegah XSS
     function escapeHtml(text) {
+        if (!text) return "";
         return text.replace(/&/g, "&amp;")
                    .replace(/</g, "&lt;")
                    .replace(/>/g, "&gt;")
@@ -221,6 +224,5 @@ document.addEventListener("DOMContentLoaded", function () {
                    .replace(/'/g, "&#039;");
     }
 
-    // Panggil fungsi saat halaman pertama kali dibuka
     loadMessages();
 });
