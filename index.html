@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Bayu & Yanti</title>
+
+    <meta property="og:title" content="Undangan Pernikahan Bayu & Yanti">
+    <meta property="og:description" content="Mohon doa restu dan kehadirannya di hari bahagia kami.">
+    <meta property="og:image" content="https://the-wedding-of-wira-dan-sueni.vercel.app/img/wa.jpg">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="600">
+    <meta property="og:url" content="https://the-wedding-of-wira-dan-suweni.vercel.app">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" type="image/png" href="img/v.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="overflow-hidden bg-black">
+    <audio id="weddingMusic" loop>
+        <source src="vid/msc.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="musicControl" onclick="toggleMusic()" class="fixed bottom-5 right-5 z-50 hidden bg-white/20 p-3 rounded-full backdrop-blur-md">
+        <span id="musicIcon">⏸</span>
+    </button>
+
+    <div id="loader">
+    <div class="slideshow-container" style="background: #1a1a1a;">
+        <img src="imgs/1.jpg" class="slide active" alt="Wedding photo 1" fetchpriority="high">
+        <img src="imgs/2.jpg" class="slide" alt="Wedding photo 2" loading="lazy">
+        <img src="imgs/3.jpg" class="slide" alt="Wedding photo 3" loading="lazy">
+        <img src="imgs/4.jpg" class="slide" alt="Wedding photo 4" loading="lazy">
+        <img src="imgs/5.jpg" class="slide" alt="Wedding photo 5" loading="lazy">
+        <img src="imgs/6.jpg" class="slide" alt="Wedding photo 6" loading="lazy">
+    </div>
+    <div id="progress">0%</div>
+    <p class="text-xs tracking-widest mt-2 uppercase text-stone-500">Mempersiapkan Kebahagiaan</p>
+</div>
+
+    <div id="cover" class="hidden cover-section">
+    <div class="cover-content">
+        <div class="mempelai-wrapper">
+            <p class="the-wedding reveal">The Wedding of</p>
+            <h1 class="font-aesthetic reveal delay-1">Bayu & Yanti</h1>
+        </div>
+
+        <div class="guest-wrapper">
+            <div class="guest-info reveal delay-2">
+                 <p class="kepada-yth">KEPADA YTH.</p>
+                <h2 id="guest-name" class="guest-name">Nama Tamu Undangan</h2>
+            </div>
+            
+            <button onclick="openInvitation()" class="btn-open reveal delay-3">
+                Open Invitation
+            </button>
+        </div>
+    </div>
+</div>
+
+    <main id="main-invitation" class="hidden"> 
+
+  <!-- HERO / HERO SECTION -->
+<section class="video-section0">
+  <img src="imgs/12.png" alt="Bayu & Yanti Wedding" class="bg-video">
+
+  <div class="video-overlay0">
+    <p class="subtitle reveal">THE WEDDING OF</p>
+    <h1 class="title reveal">Bayu & Yanti</h1>
+    <p class="subtitle reveal">11 November 2026</p>
+  </div>
+
+  <button class="scroll-btn reveal" onclick="scrollNext()">↓</button>
+</section>
+
+<!-- SECTION SWASTYASTU -->
+<section class="swastyastu-section" id="next-section">
+    <div class="swastyastu-overlay">
+
+        <p class="swastyastu-greet reveal">
+            ᬒᬁᬲ᭄ᬯᬲ᭄ᬢ᭄ᬬᬲ᭄ᬢᬸ
+        </p>
+
+        <p class="swastyastu-text reveal delay-1">
+            Samānī va ākūtiḥ samānā hṛdayāni vaḥ,
+            samānam astu vo mano yathā vaḥ susahāsati.
+        </p>
+
+        <p class="swastyastu-text reveal delay-2">
+            Semoga niat kita menjadi satu, semoga hati kita
+            selaras, dan semoga pikiran kita bersatu sehingga
+            kita dapat hidup bersama dalam keharmonisan.
+        </p>
+
+        <p class="swastyastu-text reveal delay-3">
+            Ṛg Veda X.191.4
+        </p>
+
+    </div>
+</section>
+
+
+<section class="couple-section">
+    <div class="container">
+        <div class="couple-card reveal">
+            <div class="photo-frame">
+                <img src="imgs/pria.png" alt="Bayu">
+            </div>
+            <div class="couple-info">
+                <p class="groom-subtitle">Mempelai Pria</p>
+                <h2 class="groom-title">I Gusti Bagus Candra Bayu, S.Pd.</h2>
+                <p class="groom-desc">
+                    Putra ketiga dari<br> 
+                    <strong>Bapak I Gusti Nyoman Adi</strong><br> 
+                    & <strong>Ibu I Gusti Ayu Sri Sukesti</strong>
+                </p>
+                <a href="https://www.instagram.com/igbcandrabayu" target="_blank" class="instagram-link">
+                    <i class="fab fa-instagram"></i> @igbcandrabayu
+                </a>
+            </div>
+        </div>
+
+        <div class="ampersand reveal">&</div>
+
+        <div class="couple-card reveal delay-1">
+            <div class="photo-frame">
+                <img src="imgs/wanita.png" alt="Yanti">
+            </div>
+            <div class="couple-info">
+                <p class="groom-subtitle">Mempelai Wanita</p>
+                <h2 class="groom-title">Ni Wayan Ratnya Dewiyanti, S.Pd.</h2>
+                <p class="groom-desc">
+                    Putri pertama dari<br> 
+                    <strong>Bapak I Wayan Pande Artawan </strong><br> 
+                    & <strong>Ibu Ni Wayan Yarminiasih </strong>
+                </p>
+                <a href="https://www.instagram.com/yanti.ea" target="_blank" class="instagram-link">
+                    <i class="fab fa-instagram"></i> @yanti.ea
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="location-section-v2">
+    <img src="imgs/8.jpg" alt="Location Background" class="video-bg">
+    <div class="video-darkener"></div>
+
+    <div class="content-wrapper relative z-10">
+    <div class="title-area reveal">
+        <span class="top-label">Where & When</span>
+        <h2 class="main-title">Detail Acara</h2>
+    </div>
+
+    <div class="event-card-v2 reveal delay-1">
+            <div class="card-accent"></div>
+            <div class="card-body">
+                <h4 class="event-type">Resepsi</h4>
+                <h3 class="event-date-v2">11.11.2026</h3>
+                <div class="event-info">
+                    <p>13.00 - 22.00 WITA</p>
+                    <p class="address-text">Desa Patemon, Kecamatan Seririt, Kabupaten Buleleng, Bali</p>
+                </div>
+                <a href="https://maps.app.goo.gl/ta3gsZsU6sf6hezk7" 
+   target="_blank" 
+   class="btn-minimal">
+   Petunjuk Jalan
+</a>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<section class="countdown-section">
+    <div class="container mx-auto px-4 relative z-10">
+        <h2 class="countdown-title reveal">THE WEDDING OF <br> Bayu & Yanti</h2>
+        
+        <div class="countdown-grid">
+            <div class="countdown-item reveal delay-1">
+                <span id="days" class="number">00</span>
+                <span class="label">Hari</span>
+            </div>
+            <div class="countdown-item reveal delay-2">
+                <span id="hours" class="number">00</span>
+                <span class="label">Jam</span>
+            </div>
+            <div class="countdown-item reveal delay-3">
+                <span id="minutes" class="number">00</span>
+                <span class="label">Menit</span>
+            </div>
+            <div class="countdown-item reveal delay-4">
+                <span id="seconds" class="number">00</span>
+                <span class="label">Detik</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- SECTION KISAH KAMI -->
+<section class="story-section" id="kisah-kami">
+    <div class="story-bg"></div>
+    <div class="story-overlay"></div>
+
+    <div class="container mx-auto px-4 story-content">
+        <h2 class="story-title reveal">Kisah Kami</h2>
+        <p class="story-subtitle reveal">
+            Setiap perjalanan memiliki ceritanya sendiri,
+            dan inilah perjalanan yang membawa kami kembali bersama.
+        </p>
+
+        <div class="timeline-container">
+            <div class="space-y-16">
+
+                <!-- CERITA 1 -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-text text-right-md">
+                        <h3 class="year">Awal Pertemuan</h3>
+                        <p class="description">
+                            Kisah kami bermula dari pertemuan sederhana
+                            di UKM yang sama, di universitas yang sama.
+                            Di antara banyak wajah, Yanti berhasil mencuri
+                            perhatianku hingga membuatku selalu bersemangat
+                            menghadiri setiap kegiatan UKM, hanya untuk
+                            bisa melihatnya kembali.
+                        </p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-empty"></div>
+                </div>
+
+                <!-- CERITA 2 -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-empty order-2-md"></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-text text-left-md order-1-md">
+                        <h3 class="year">Jatuh Cinta</h3>
+                        <p class="description">
+                            Seiring waktu, kami mulai saling mengenal
+                            dan memutuskan untuk bersama. Setiap pertemuan
+                            selalu menghadirkan debar yang sama, seolah
+                            jatuh cinta selalu terasa baru.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CERITA 3 -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-text text-right-md">
+                        <h3 class="year">Bertumbuh Bersama</h3>
+                        <p class="description">
+                            Kami melewati masa kuliah, wisuda, membangun
+                            karier, hingga menghadapi jarak dan berbagai
+                            ujian. Dalam perjalanan itu, ada masa ketika
+                            keadaan membawa kami menempuh jalan yang berbeda.
+                            Meski tak lagi berjalan beriringan, waktu memberi
+                            kami ruang untuk bertumbuh, memahami diri,
+                            dan memaknai kembali arti sebuah cinta.
+                        </p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-empty"></div>
+                </div>
+
+                <!-- CERITA 4 -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-empty order-2-md"></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-text text-left-md order-1-md">
+                        <h3 class="year">Dipertemukan Kembali</h3>
+                        <p class="description">
+                            Tahun-tahun berlalu, hingga takdir kembali
+                            mempertemukan kami. Kami menyadari bahwa masih
+                            ada cinta yang layak diperjuangkan. Kali ini,
+                            kami memilih kembali bukan untuk mengulang
+                            masa lalu, melainkan membangun kisah baru
+                            dengan hati yang lebih dewasa, keyakinan
+                            yang lebih kuat, dan tujuan yang sama.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CERITA 5 -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-text text-right-md">
+                        <h3 class="year">Cinta yang Menemukan Jalannya</h3>
+                        <p class="description">
+                            Mungkin dahulu ada yang meragukan perjalanan
+                            kami. Namun, hari ini, kisah kami menjadi
+                            jawaban bahwa cinta tak selalu berjalan lurus,
+                            perpisahan tak selalu menjadi akhir, dan dua
+                            hati yang saling memperjuangkan dapat menemukan
+                            jalan untuk kembali.
+                        </p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-empty"></div>
+                </div>
+
+                <!-- CERITA 6 -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-empty order-2-md"></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-text text-left-md order-1-md">
+                        <h3 class="year">Untuk Selamanya</h3>
+                        <p class="description italic">
+                            Kini, kami siap memulai babak baru. Bukan lagi
+                            tentang aku dan kamu, melainkan tentang kita—
+                            tentang rumah yang akan dibangun, mimpi yang
+                            akan dirajut, dan cinta yang akan dijaga hari ini,
+                            esok, hingga sepanjang usia.
+
+                            <br><br>
+
+                            Karena pada akhirnya, dari sekian banyak jalan
+                            yang pernah kami tempuh, kami memilih kembali
+                            berjalan bersama, kali ini untuk selamanya.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="gift-section">
+    <div class="container-gift">
+        <h2 class="gift-title reveal">Kado Digital</h2>
+        <p class="gift-subtitle reveal delay-1">
+            Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika memberi adalah ungkapan tanda kasih Anda, kami sediakan fitur di bawah ini:
+        </p>
+
+        <div class="gift-grid">
+            <div class="gift-card reveal delay-2">
+                <img src="imgs/BCA.svg" alt="BCA" class="bank-logo">
+                <p class="label-rek">Nomor Rekening</p>
+                <h3 id="norek1" class="account-number">8270821376</h3>
+                <p class="account-name">a.n I Gusti Bagus Candra Bayu</p>
+                
+                <button onclick="copyToClipboard('norek1')" class="btn-copy">
+                    <span>Salin Rekening</span>
+                </button>
+            </div>
+
+            <div class="gift-card reveal delay-3">
+                <img src="imgs/BRI_2020.svg" alt="BRI" class="bank-logo">
+                <p class="label-rek">Nomor Rekening</p>
+                <h3 id="norek2" class="account-number">024801051993503</h3>
+                <p class="account-name">Ni Wayan Ratnya Dewiyanti</p>
+                
+                <button onclick="copyToClipboard('norek2')" class="btn-copy">
+                    <span>Salin Rekening</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="video-section reveal">
+    <div class="container1">
+        <div class="video-header2">
+            <h1 class="groom-title-bg">ETERNITY</h1>
+            <p class="groom-subtitle2">A Cinematic Journey</p>
+            <h2 class="groom-title2">The Love Story of <br>Bayu & Yanti</h2>
+        </div>
+        
+        <div class="video-wrapper">
+            <div class="video-frame">
+                <iframe 
+                    class="video-element"
+                    src="https://www.youtube.com/embed/oQ3zasoh1Zk?autoplay=1&mute=1&loop=1&playlist=oQ3zasoh1Zk" 
+                    title="Prewedding of Bayu & Yanti" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- GALLERY SECTION -->
+<section class="gallery-section" id="gallery">
+
+    <!-- JUDUL DI ATAS FOTO -->
+    <div class="gallery-header">
+        <h2 class="gallery-title reveal">
+            OUR<br>MEMORIES
+        </h2>
+    </div>
+
+    <!-- GRID FOTO -->
+    <div class="gallery-container reveal delay-1">
+        <div class="gallery-grid" id="galleryGrid">
+
+            <div class="gallery-item">
+                <img src="imgs/1.jpg" alt="Kenangan 1" loading="lazy">
+            </div>
+
+            <div class="gallery-item">
+                <img src="imgs/2.jpg" alt="Kenangan 2" loading="lazy">
+            </div>
+
+            <div class="gallery-item">
+                <img src="imgs/3.jpg" alt="Kenangan 3" loading="lazy">
+            </div>
+
+            <div class="gallery-item">
+                <img src="imgs/4.png" alt="Kenangan 4" loading="lazy">
+            </div>
+
+            <div class="gallery-item">
+                <img src="imgs/8.jpg" alt="Kenangan 5" loading="lazy">
+            </div>
+
+            <div class="gallery-item">
+                <img src="imgs/10.png" alt="Kenangan 6" loading="lazy">
+            </div>
+
+            <div class="gallery-item">
+                <img src="imgs/11.png" alt="Kenangan 7" loading="lazy">
+            </div>
+
+            <div class="gallery-item">
+                <img src="imgs/13.png" alt="Kenangan 8" loading="lazy">
+            </div>
+
+            <div class="gallery-item">
+                <img src="imgs/25.png" alt="Kenangan 9" loading="lazy">
+            </div>
+
+            <div class="gallery-item">
+                <img src="imgs/26.png" alt="Kenangan 10" loading="lazy">
+            </div>
+
+            <div class="gallery-item">
+                <img src="imgs/27.png" alt="Kenangan 11" loading="lazy">
+            </div>
+
+            <div class="gallery-item">
+                <img src="imgs/28.png" alt="Kenangan 12" loading="lazy">
+            </div>
+
+            <div class="gallery-item">
+                <img src="imgs/29.png" alt="Kenangan 13" loading="lazy">
+            </div>
+
+            <div class="gallery-item">
+                <img src="imgs/30.png" alt="Kenangan 14" loading="lazy">
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MODAL FOTO -->
+    <div id="galleryModal" class="gallery-modal" aria-hidden="true">
+
+        <button type="button" class="close-modal"
+                id="closeGalleryModal" aria-label="Tutup foto">
+            &times;
+        </button>
+
+        <button type="button" class="modal-nav modal-prev"
+                id="modalPrev" aria-label="Foto sebelumnya">
+            &#10094;
+        </button>
+
+        <img id="imgFull" src="" alt="Foto kenangan">
+
+        <button type="button" class="modal-nav modal-next"
+                id="modalNext" aria-label="Foto berikutnya">
+            &#10095;
+        </button>
+
+        <a id="downloadBtn" href="" download>DOWNLOAD</a>
+
+    </div>
+
+</section>
+
+
+
+<!-- SECTION RSVP & UCAPAN -->
+<section class="rsvp-section" id="rsvp">
+    <div class="rsvp-container">
+
+        <div class="rsvp-heading">
+            <h2>KONFIRMASI KEHADIRAN &<br>
+                KIRIMKAN DOA RESTU
+            </h2>
+
+            <p>
+                Mohon konfirmasi kehadiran Bapak/Ibu/Saudara/i
+                dan jangan ragu untuk berbagi doa serta harapan
+                manis untuk kami.
+            </p>
+        </div>
+
+        <div class="rsvp-divider"></div>
+
+        <form id="rsvpForm" class="rsvp-form">
+            <input
+                type="text"
+                id="rsvpName"
+                placeholder="Nama"
+                maxlength="80"
+                required
+            >
+
+            <textarea
+                id="rsvpMessage"
+                placeholder="Ucapan"
+                rows="4"
+                maxlength="500"
+                required
+            ></textarea>
+
+            <select id="rsvpStatus" required>
+                <option value="" disabled selected>
+                    Konfirmasi Kehadiran
+                </option>
+                <option value="Hadir">Hadir</option>
+                <option value="Tidak Hadir">Tidak Hadir</option>
+                <option value="Ragu-ragu">Masih belum pasti</option>
+            </select>
+
+            <button type="submit" class="rsvp-submit">
+                Send
+            </button>
+
+            <p id="rsvpFeedback" class="rsvp-feedback"
+               role="status"></p>
+        </form>
+
+        <div class="rsvp-divider bottom-divider"></div>
+
+        <div class="rsvp-comments-header">
+            <h3>Ucapan & Doa</h3>
+            <span id="rsvpCount">0 ucapan</span>
+        </div>
+
+        <div id="rsvpMessages" class="rsvp-messages">
+            <p class="rsvp-empty">
+                Jadilah yang pertama menyampaikan doa untuk
+                Bayu & Yanti.
+            </p>
+        </div>
+
+        <div class="rsvp-pagination" id="rsvpPagination"></div>
+
+    </div>
+</section>
+
+
+
+<section class="thanks-section">
+    <div class="thanks-bg">
+        <img src="imgs/30.png" alt="Closing Photo" loading="lazy">
+    </div>
+    
+    <div class="thanks-overlay">
+        <div class="thanks-content">
+            <p class="thanks-greet reveal">
+                Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu kepada kami.
+            </p>
+            <h2 class="thanks-title reveal delay-1">Terima Kasih</h2>
+            <p class="thanks-names reveal delay-2">Bayu & Yanti
+            </p>
+            <p class="aksara-bali reveal delay-3">
+            ᬒᬫ᭄ ᬰᬵᬦ᭄ᬢᬶ ᬰᬵᬦ᭄ᬢᬶ ᬰᬵᬦ᭄ᬢᬶ ᬒᬫ᭄
+        </p>
+        </div>
+
+        <div class="branding-voluntaz reveal delay-3">
+            <p>Digital Invitation by</p>
+                <span>voluntaz Digital</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+    <script>
+
+document.addEventListener("DOMContentLoaded", function() {
+    const modal = document.getElementById("galleryModal");
+    const modalImg = document.getElementById("imgFull");
+    const downloadBtn = document.getElementById("downloadBtn");
+    const closeBtn = document.querySelector(".close-modal");
+
+    // Ambil semua gambar di gallery-grid
+    const images = document.querySelectorAll(".gallery-item img");
+
+    images.forEach(img => {
+        img.addEventListener("click", function() {
+            // Munculkan Modal
+            modal.style.display = "flex";
+            // Masukkan source gambar ke modal
+            modalImg.src = this.src;
+            // Masukkan source gambar ke tombol download
+            downloadBtn.href = this.src;
+            
+            console.log("Gambar Terpilih: " + this.src);
+        });
+    });
+
+    // Tutup Modal saat klik X
+    if(closeBtn) {
+        closeBtn.onclick = () => modal.style.display = "none";
+    }
+
+    // Tutup Modal saat klik area hitam
+    window.onclick = (e) => {
+        if (e.target == modal) modal.style.display = "none";
+    }
+});
+
+        // 1. Inisialisasi Variabel & Elemen
+const urlParams = new URLSearchParams(window.location.search);
+const namaTamu = urlParams.get('to');
+const music = document.getElementById("weddingMusic");
+const musicIcon = document.getElementById("musicIcon");
+const musicBtn = document.getElementById("musicControl");
+
+// 2. Set Nama Tamu dari URL (?to=Nama+Tamu)
+if (namaTamu) {
+    const namaBersih = decodeURIComponent(namaTamu.replace(/[+]/g, ' '));
+    document.getElementById('guest-name').innerText = namaBersih;
+}
+
+// 3. Sistem Loader & Slideshow Pre-load
+let prog = 0;
+let sIdx = 0;
+const slides = document.querySelectorAll('.slide');
+
+const loadTimer = setInterval(() => {
+    prog += 2;
+    const progressEl = document.getElementById('progress');
+    if (progressEl) progressEl.innerText = prog + '%';
+
+    // Pergantian gambar setiap progress naik 25%
+    if (prog % 10 === 0 && slides.length > 0) {
+        slides[sIdx].classList.remove('active');
+        sIdx = (sIdx + 1) % slides.length;
+        slides[sIdx].classList.add('active');
+    }
+
+    if (prog >= 100) {
+        clearInterval(loadTimer);
+        const loader = document.getElementById('loader');
+        const cover = document.getElementById('cover');
+        
+        if (loader) loader.style.display = 'none';
+        if (cover) {
+            cover.classList.remove('hidden');
+            cover.classList.add('flex');
+            // Trigger animasi awal pada cover
+            setTimeout(() => {
+                document.querySelectorAll('#cover .reveal').forEach(el => el.classList.add('active'));
+            }, 200);
+        }
+    }
+}, 40);
+
+function openInvitation() {
+    const music = document.getElementById("weddingMusic");
+    const cover = document.getElementById('cover');
+    const mainContent = document.getElementById('main-invitation');
+
+    // 1. Putar Musik Secepat Mungkin
+    if (music) { music.play(); }
+
+    if (cover && mainContent) {
+        // 2. Tambahkan class animasi keluar pada cover
+        cover.classList.add('transition-out');
+
+        // 3. Tampilkan main content (tapi biarkan transparan dulu)
+        mainContent.classList.remove('hidden');
+        mainContent.style.opacity = '0';
+
+        setTimeout(() => {
+            // 4. Hilangkan cover sepenuhnya
+            cover.style.display = 'none';
+            
+            // 5. Unlock scroll & jalankan animasi konten
+            document.body.classList.remove('overflow-hidden');
+            
+            // 6. Animasi masuk konten utama (Fade In + Scale Up)
+            mainContent.style.transition = 'all 1.2s cubic-bezier(0.22, 1, 0.36, 1)';
+            mainContent.style.opacity = '1';
+            
+            initReveal();
+            startCountdown();
+
+            // Scroll halus ke arah konten agar terasa dinamis
+            window.scrollTo({ top: 10, behavior: 'smooth' });
+        }, 800); // Sesuaikan dengan durasi CSS
+    }
+}
+
+// 5. Kontrol Musik (Play/Pause)
+function toggleMusic() {
+    if (!music) return;
+    if (music.paused) {
+        music.play();
+        musicIcon.innerText = "⏸";
+    } else {
+        music.pause();
+        musicIcon.innerText = "▶︎";
+    }
+}
+
+function initReveal() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                // Saat elemen masuk ke layar
+                e.target.classList.add('active');
+            } else {
+                // Saat elemen keluar dari layar (Scroll balik)
+                e.target.classList.remove('active');
+            }
+        });
+    }, { 
+        // Threshold 0.1 berarti animasi jalan saat 10% elemen terlihat
+        threshold: 0.1 
+    });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+}
+
+// 7. Hitung Mundur Acara
+function moveSlide(direction) {
+    const grid = document.getElementById('galleryGrid');
+    // Ambil lebar satu item gallery (termasuk gap/margin)
+    const scrollAmount = grid.querySelector('.gallery-item').offsetWidth + 15;
+    
+    // Geser ke kiri (direction -1) atau ke kanan (direction 1)
+    grid.scrollBy({
+        left: direction * scrollAmount,
+        behavior: 'smooth'
+    });
+}
+
+function startCountdown() {
+    const target = new Date("Nov 11, 2026 13:00:00").getTime();
+    
+    const timer = setInterval(() => {
+        const now = new Date().getTime();
+        const diff = target - now;
+
+        if (diff < 0) {
+            clearInterval(timer);
+            return;
+        }
+
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+        if(document.getElementById("days")) {
+            document.getElementById("days").innerText = d.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = h.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = m.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = s.toString().padStart(2, '0');
+        }
+    }, 1000);
+}
+
+// 8. Navigasi Scroll
+function scrollNext() {
+    const nextSection = document.getElementById("next-section");
+    if (nextSection) {
+        nextSection.scrollIntoView({ behavior: "smooth" });
+    }
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("galleryModal");
+    const modalImg = document.getElementById("imgFull");
+    const downloadBtn = document.getElementById("downloadBtn");
+    const closeBtn = document.getElementById("closeGalleryModal");
+    const prevBtn = document.getElementById("modalPrev");
+    const nextBtn = document.getElementById("modalNext");
+    const galleryImages = Array.from(
+        document.querySelectorAll("#galleryGrid .gallery-item img")
+    );
+
+    if (!modal || !modalImg || !galleryImages.length) return;
+
+    let currentIndex = 0;
+
+    function showImage(index) {
+        currentIndex =
+            (index + galleryImages.length) % galleryImages.length;
+
+        const selectedImage = galleryImages[currentIndex];
+
+        modalImg.src = selectedImage.src;
+        modalImg.alt = selectedImage.alt || "Foto kenangan";
+        downloadBtn.href = selectedImage.src;
+
+        const fileName = selectedImage.src.split("/").pop();
+        downloadBtn.setAttribute("download", fileName);
+    }
+
+    function openModal(index) {
+        showImage(index);
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+    }
+
+    galleryImages.forEach(function (img, index) {
+        img.addEventListener("click", function () {
+            openModal(index);
+        });
+    });
+
+    if (closeBtn) {
+        closeBtn.addEventListener("click", closeModal);
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener("click", function () {
+            showImage(currentIndex - 1);
+        });
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener("click", function () {
+            showImage(currentIndex + 1);
+        });
+    }
+
+    modal.addEventListener("click", function (event) {
+        if (event.target === modal) closeModal();
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (!modal.classList.contains("is-open")) return;
+
+        if (event.key === "Escape") closeModal();
+        if (event.key === "ArrowLeft") showImage(currentIndex - 1);
+        if (event.key === "ArrowRight") showImage(currentIndex + 1);
+    });
+});
+
+
+// 9. Fitur Salin Rekening
+function copyToClipboard(id) {
+    const text = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(text).then(() => {
+        alert("Nomor rekening berhasil disalin!");
+    }).catch(err => {
+        console.error('Gagal menyalin: ', err);
+    });
+}
+    </script>
+</body>
+</html>
